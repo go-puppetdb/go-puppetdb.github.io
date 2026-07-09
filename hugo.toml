@@ -1,0 +1,27 @@
+baseURL = "https://go-puppetdb.github.io/"
+title = "go-puppetdb"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[[params.phases]]
+  name = "PQL front-end"
+  status = "ready"
+  blurb = "Lexer, parser and typed AST for the PuppetDB entities (`nodes`, `resources`, `facts`, `inventory`, `catalogs`, `reports`, `events`, `edges`, `fact_contents`), comparison / regexp / boolean operators, `in` membership, null tests, projection and `order` / `limit` / `offset`."
+[[params.phases]]
+  name = "AST-query compiler"
+  status = "ready"
+  blurb = "Compile PQL to PuppetDB's canonical `[\"from\", entity, [\"and\", …]]` JSON wire form via `MarshalAST`, the shape the HTTP API accepts directly."
+[[params.phases]]
+  name = "In-memory evaluator"
+  status = "ready"
+  blurb = "`NewStore` with recursive subquery evaluation, ordering, paging and projection, so a PQL query runs against an in-memory dataset — no server required, fully testable."
+[[params.phases]]
+  name = "HTTP client"
+  status = "ready"
+  blurb = "`NewClient` POSTs PQL or a compiled AST to a live `/pdb/query/v4`, with token auth, behind an injectable `http.RoundTripper` seam."
+[[params.phases]]
+  name = "Storage server & aggregates"
+  status = "planned"
+  blurb = "This library queries; it does not persist, index or serve. Aggregate / function projections (`count()`, `group by`), legacy `select_*` subquery spellings and live-data sync are documented follow-ons."
