@@ -87,8 +87,10 @@
       <span class="pill">AST-query JSON</span>
       <span class="pill">in-memory evaluator</span>
       <span class="pill">HTTP client</span>
+      <span class="pill">HTTP server + ingestion</span>
+      <span class="pill">embedded storage</span>
       <span class="pill">subqueries</span>
-      <span class="pill">order / limit / offset</span>
+      <span class="pill">group by / aggregates</span>
       <span class="pill">100% coverage</span>
       <span class="pill">6 arches + wasm</span>
     </div>
@@ -105,7 +107,7 @@
   </header>
 
   <main class="wrap">
-    <p class="lead">go-puppetdb is a pragmatic, pure-Go (<code>CGO_ENABLED=0</code>) toolkit for <strong>PuppetDB</strong>'s query language. It provides a <strong>PQL</strong> lexer, parser and typed AST; a compiler from that AST to PuppetDB's canonical <strong>AST-query JSON</strong> wire form; an <strong>in-memory evaluator</strong> so PQL is useful and fully testable without a server; and an <strong>HTTP client</strong> for a real PuppetDB <code>/pdb/query/v4</code> endpoint behind an injectable <code>http.RoundTripper</code> seam. Entities (<code>nodes</code>, <code>resources</code>, <code>facts</code>, <code>inventory</code>, <code>catalogs</code>, <code>reports</code>, …), comparison / regexp / boolean operators, <code>in</code> subqueries, null tests, projection and <code>order</code> / <code>limit</code> / <code>offset</code> are all supported. Standard library only, 100% coverage, six arches and WebAssembly.</p>
+    <p class="lead">go-puppetdb is a pragmatic, pure-Go (<code>CGO_ENABLED=0</code>) toolkit for <strong>PuppetDB</strong>. It provides a <strong>PQL</strong> lexer, parser and typed AST; a compiler to PuppetDB's canonical <strong>AST-query JSON</strong> wire form (and <code>ParseAST</code>, the inverse); an <strong>in-memory evaluator</strong> — with <code>group by</code> and <code>count</code>/<code>avg</code>/<code>sum</code>/<code>min</code>/<code>max</code> aggregation — so PQL is useful and fully testable without a server; an <strong>HTTP client</strong> for a real PuppetDB <code>/pdb/query/v4</code> endpoint behind an injectable <code>http.RoundTripper</code> seam; <strong>command ingestion</strong> for the current wire formats (replace facts v5, replace catalog v9, store report v8); a pure-Go <strong>embedded storage</strong> backend (a JSON file, no external database); and an <strong>HTTP server</strong> exposing <code>/pdb/query/v4</code> and <code>/pdb/cmd/v1</code> on top of it. Entities (<code>nodes</code>, <code>resources</code>, <code>facts</code>, <code>inventory</code>, <code>catalogs</code>, <code>reports</code>, …), comparison / regexp / boolean operators, <code>in</code> subqueries, null tests, projection and <code>order</code> / <code>limit</code> / <code>offset</code> are all supported. Standard library only, 100% coverage, six arches and WebAssembly.</p>
 
     <section class="grid">
       {{ range .Site.Params.phases }}
@@ -120,7 +122,7 @@
       <li><span class="status active">active</span> in progress (substantial work shipped, not yet finished)</li>
       <li><span class="status planned">planned</span> not started yet (or documented deferral)</li>
     </ul>
-    <p class="principles">The PuppetDB query engine of the go-puppetdb org: a PQL front-end, an AST-query compiler, an in-memory evaluator and an HTTP client, all in dependency-free pure Go. Part of the pure-Go Puppet stack alongside <a href="https://github.com/go-facter">go-facter</a>, <a href="https://github.com/go-hiera">go-hiera</a>, <a href="https://github.com/go-pcore">go-pcore</a> and <a href="https://github.com/go-puppet">go-puppet</a>.</p>
+    <p class="principles">The PuppetDB engine of the go-puppetdb org: a PQL front-end, an AST-query compiler, an in-memory evaluator, an HTTP client, command ingestion, embedded storage and a PuppetDB-compatible HTTP server, all in dependency-free pure Go. Part of the pure-Go Puppet stack alongside <a href="https://github.com/go-facter">go-facter</a>, <a href="https://github.com/go-hiera">go-hiera</a>, <a href="https://github.com/go-pcore">go-pcore</a> and <a href="https://github.com/go-puppet">go-puppet</a>.</p>
   </main>
 
   <footer class="wrap">
