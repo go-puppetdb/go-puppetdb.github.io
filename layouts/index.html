@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{{/* Dark Reader repaints pages that already draw their own dark theme, as this one does: ask it to stand aside. */}}
+<meta name="darkreader-lock">
 <title>{{ .Site.Title }} — PuppetDB query language (PQL) in pure Go, no cgo</title>
 <meta name="description" content="go-puppetdb — a pure-Go (CGO_ENABLED=0) PuppetDB toolkit: a PQL parser and typed AST, a compiler to canonical AST-query JSON, an in-memory evaluator and a /pdb/query/v4 HTTP client.">
 <style>
